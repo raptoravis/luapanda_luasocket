@@ -6,8 +6,17 @@ set (PROJECT_NAME luapanda_luasocket)
 
 project(${PROJECT_NAME} VERSION 1.0)
 
-set (LIB_LUA lua53)
-set (LIB_LUA_PATH lua-5.3.5/src)
+# option(USE_LUA54 "Use the lasest lua 5.3.5" OFF) #OFF by default
+set (USE_LUA54 ON)
+
+if (USE_LUA54)
+	set (LIB_LUA lua54)
+	set (LIB_LUA_PATH lua-5.4.3/src)
+else()
+	set (LIB_LUA lua53)
+	set (LIB_LUA_PATH lua-5.3.5/src)
+endif(USE_LUA54)
+
 
 include_directories(${LIB_LUA_PATH})
 
